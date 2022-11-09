@@ -395,7 +395,11 @@ function getPreviewColorTable(colorObject) {
   mdx = `
     <tr>
       <td>
-        <p class="color-table-token">--${colorObject.variable}</p>
+      <f-div padding="none" width="190px">
+          <f-text weight="regular" variant="para" size="small" state="primary" copyOnClick>--${
+            colorObject.variable
+          }</f-text>
+        </f-div>
       </td>
       <td>
         <div class="custom-table-flex">
@@ -406,7 +410,7 @@ function getPreviewColorTable(colorObject) {
             colorObject.fLightValue
           }", height: 16, width: 60, borderRadius: 0, marginLeft: 50}}></div>
         </div>
-      </td>z
+      </td>
       <td>
         <div class="custom-table-flex">
           <div class="width-set">

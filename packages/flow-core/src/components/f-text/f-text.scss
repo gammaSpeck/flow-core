@@ -142,6 +142,10 @@ f-text {
     @include shimmer-self();
   }
 
+  &[copyOnClick] {
+    cursor: copy;
+  }
+
   &[disabled] {
     @include disabled();
   }

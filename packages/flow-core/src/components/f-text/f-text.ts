@@ -69,6 +69,28 @@ export class FText extends FRoot {
   @property({ reflect: true, type: Boolean })
   ellipsis?: boolean = false;
 
+  /**
+   * @attribute will copy the content inside f-text
+   */
+  @property({ reflect: true, type: Boolean })
+  copyOnClick?: boolean = false;
+
+  copyToClipboard() {
+    if (this.copyOnClick) {
+      navigator.clipboard.writeText(this.textContent ?? "");
+      const oldContent = this.innerHTML;
+      const oldColor = this.style.color;
+      this.textContent = "Copied";
+      if (this.textContent === "Copied") {
+        this.style.color = "#66cc69";
+      }
+      setTimeout(() => {
+        this.innerHTML = oldContent;
+        this.style.color = oldColor;
+      }, 500);
+    }
+  }
+
   render() {
     /**
      * set default weight according to variant
@@ -80,6 +102,8 @@ export class FText extends FRoot {
         this.weight = "regular";
       }
     }
+
+    this.onclick = this.copyToClipboard;
 
     /**
      * Final html to render
